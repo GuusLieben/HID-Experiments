@@ -1,0 +1,14 @@
+spring:
+  main:
+    banner-mode: off
+
+hid:
+  device:
+    specification: nl.guuslieben.experiment.hid.devices.cleware.ClewareTrafficLightDeviceSpecification
+    state:
+      scramble:
+        interval: 2500
+      logger:
+        interval: 5000
+  listener:
+    logging: true
