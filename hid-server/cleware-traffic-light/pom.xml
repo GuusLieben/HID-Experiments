@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>nl.guuslieben</groupId>
+    <artifactId>hid-server</artifactId>
+    <version>${revision}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>cleware-traffic-light</artifactId>
+  <name>Cleware Traffic Light</name>
+  <description>HID server to control the Cleware USB Traffic Light</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>nl.guuslieben</groupId>
+      <artifactId>hid-server-std</artifactId>
+      <version>${revision}</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: off
+
+hid:
+  api:
+    base-path: /cleware/traffic-light
+  device:
+    specification: nl.guuslieben.hid.cleware.device.ClewareTrafficLightDeviceSpecification
+  logging:
+    enabled: false
+    interval: 5000
+
+cors:
+  allowed-origins: http://localhost:4200
