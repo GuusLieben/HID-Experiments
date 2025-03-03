@@ -8,7 +8,6 @@ public class ClewareTrafficLightDeviceSpecification implements DeviceSpecificati
 
     private static final int PRODUCT_ID = 0x0008;
     private static final int VENDOR_ID = 0x0D50;
-    private static final byte INTERFACE = 0x0;
 
     @Override
     public boolean isSatisfiedBy(HidDevice device) {
@@ -49,7 +48,7 @@ public class ClewareTrafficLightDeviceSpecification implements DeviceSpecificati
 
         boolean pass = true;
         for (ClewareTrafficLightColor color : ClewareTrafficLightColor.values()) {
-            byte[] buffer = this.createStateBuffer(color, enabled.test(color));
+            byte[] buffer = this.createStateBuffer(device, color, enabled.test(color));
             int written = device.write(buffer, buffer.length, (byte) 0x1);
             pass &= written > 0; // -2 is invalid write, -1 is error, 0 is no written bytes
         }
@@ -63,10 +62,10 @@ public class ClewareTrafficLightDeviceSpecification implements DeviceSpecificati
         }
     }
 
-    private byte[] createStateBuffer(ClewareTrafficLightColor color, boolean enabled) {
+    private byte[] createStateBuffer(HidDevice device, ClewareTrafficLightColor color, boolean enabled) {
         // [interface, color address, state]
         return new byte[] {
-            INTERFACE,
+            (byte) device.getInterfaceNumber(),
             color.getAddress(),
             (byte) (enabled ? 0x1 : 0x0)
         };
