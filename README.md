@@ -1,5 +1,5 @@
 # HID Experiments
-This repository contains the code for the experiments with HID devices (and thus serves no practical use beyond my own entertainment).
+This repository contains the code for the experiments with HID devices and thus serves no practical use beyond my own entertainment (and yes I realize 'HID device' is a classic case of RAS syndrome).
 
 The majority of the code is written to be re-usable for various HID devices, though the primary implementation focuses on the [Cleware USB Traffic Light](https://www.cleware-shop.de/USB-MiniTrafficLight-EN).
 
