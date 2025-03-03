@@ -1,0 +1,10 @@
+<ul class="navbar-nav mr-auto">
+    <app-menu-item
+            (enter)="onItemEnter($event)"
+            (leave)="onItemLeave()"
+            *ngFor="let item of filteredMenu"
+            [hoverItemUrlSegment]="hoverItemUrlSegment"
+            [item]="item"
+            [routedUrlSegments]="(routedUrlSegments$ | async) || []"
+    />
+</ul>

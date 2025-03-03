@@ -1,0 +1,38 @@
+@use "sass:map";
+
+$menu-text-color: #black;
+$menu-routed-text-color: #red;
+$menu-hover-text-color: #blue;
+$header-color: #343a40;
+
+.menu-item {
+  color: $menu-text-color;
+  --bg-dropdown-color: $menu-text-color;
+
+  display: flex;
+  height: 100%;
+  padding: 0 8px;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+
+  &.menu-routed {
+    color: $menu-routed-text-color;
+    --bg-dropdown-color: $menu-routed-text-color;
+  }
+
+  &:hover {
+    color: $menu-hover-text-color;
+    --bg-dropdown-color: $menu-hover-text-color;
+  }
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-color: $header-color;
+}
+
+.dropdown-toggle::after {
+  margin-top: 0.75em;
+}

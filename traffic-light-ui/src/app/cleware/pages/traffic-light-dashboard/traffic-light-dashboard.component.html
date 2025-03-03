@@ -1,0 +1,8 @@
+<app-hid-device-dashboard
+  [devices]="(trafficLights$ | async) || []"
+  [stateComponent]="trafficLightTemplate"
+/>
+
+<ng-template #trafficLightTemplate let-trafficLight>
+  <app-traffic-light [trafficLight]="trafficLight"></app-traffic-light>
+</ng-template>

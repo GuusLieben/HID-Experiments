@@ -1,0 +1,52 @@
+<li class="nav-item" [ngClass]="{
+    'menu-routed': isRouted(item),
+    'dropdown': item.subItems?.length
+}">
+    <ng-container [ngTemplateOutlet]="menuItem"
+                  [ngTemplateOutletContext]="{templateItem: item, path: createPath([], item)}"></ng-container>
+</li>
+
+<ng-template #menuItem let-templateItem='templateItem' let-path='path'>
+    @if (getSubItems(templateItem).length > 0) {
+        <ng-container [ngTemplateOutlet]="collapsibleItem"
+                      [ngTemplateOutletContext]="{templateItem, path}"></ng-container>
+    } @else {
+        <ng-container [ngTemplateOutlet]="leafItem"
+                      [ngTemplateOutletContext]="{templateItem, path}"></ng-container>
+    }
+</ng-template>
+
+<ng-template #collapsibleItem let-templateItem='templateItem' let-path='path'>
+    <a
+            (mouseenter)="onMouseEnter(templateItem)"
+            (mouseleave)="onMouseLeave()"
+            [routerLink]="templateItem.isNavigable ? getLink(path) : null"
+            class="menu-item nav-link dropdown-toggle"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="navbarDropdown"
+    >
+        {{templateItem.label}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown" #dropdownMenu>
+        @for (subItem of getSubItems(templateItem); track subItem) {
+            <ng-container [ngTemplateOutlet]="menuItem"
+                          [ngTemplateOutletContext]="{templateItem: subItem, path: createPath(path, subItem)}"></ng-container>
+        }
+    </div>
+</ng-template>
+
+<ng-template #leafItem let-templateItem='templateItem' let-path='path'>
+    <a
+            (mouseenter)="onMouseEnter(templateItem)"
+            (mouseleave)="onMouseLeave()"
+            [ngClass]="{'menu-routed': isRouted(templateItem)}"
+            [routerLink]="templateItem.isNavigable ? getLink(path) : null"
+            class="menu-item nav-link"
+            role="button"
+    >
+        {{templateItem.label}}
+    </a>
+</ng-template>

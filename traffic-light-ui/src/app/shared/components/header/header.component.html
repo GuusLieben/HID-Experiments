@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-joulz-grid px-3 py-1" id="navbar">
+  <div class="px-1 text-white">
+      HID Device Explorer
+  </div>
+
+  <!-- Navigation -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="pl-3 px-3">
+    <app-menu
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      [ngbCollapse]="isMenuCollapsed"></app-menu>
+  </div>
+</nav>

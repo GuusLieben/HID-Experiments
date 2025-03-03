@@ -1,0 +1,43 @@
+
+#navbar {
+  $navbar-height: 50px;
+  background-color: black;
+  background-repeat: repeat-x;
+  min-height: $navbar-height;
+
+  .service-info-wrapper {
+    height: $navbar-height;
+  }
+
+  #header-logo {
+    min-width: 50px;
+    height: $navbar-height;
+  }
+
+  .icon-button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 0 16px;
+    cursor: pointer;
+    height: $navbar-height;
+  }
+
+  .navbar-toggler {
+    height: $navbar-height;
+  }
+
+  #service-status-header {
+    cursor: pointer;
+  }
+}
+
+//@media (max-width: map.get($grid-breakpoints, 'xl')) {
+//  app-menu {
+//    background: $header-color;
+//  }
+//
+//  #navbar {
+//    background-image: none;
+//  }
+//}

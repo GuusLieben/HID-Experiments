@@ -1,0 +1,58 @@
+<div class="container mt-3">
+  <div class="row" *ngFor="let device of devices">
+    <div class="col-6">
+      <div class="row gap-3">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Device Information</h5>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Serial Number</dt>
+                <dd class="col-8">{{ device.information.serialNumber }}</dd>
+                <dt class="col-4">Vendor ID</dt>
+                <dd class="col-8">{{ device.information.vendorId }}</dd>
+                <dt class="col-4">Product ID</dt>
+                <dd class="col-8">{{ device.information.productId }}</dd>
+                <dt class="col-4">Manufacturer</dt>
+                <dd class="col-8">{{ device.information.manufacturer }}</dd>
+                <dt class="col-4">Product</dt>
+                <dd class="col-8">{{ device.information.product }}</dd>
+                <dt class="col-4">Path</dt>
+                <dd class="col-8"><code>{{ device.information.path }}</code></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Device Configuration</h5>
+            </div>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-4">Interface</dt>
+                <dd class="col-8">{{ device.configuration.interfaceNumber }}</dd>
+                <dt class="col-4">Usage Page</dt>
+                <dd class="col-8">{{ device.configuration.usagePage }}</dd>
+                <dt class="col-4">Usage</dt>
+                <dd class="col-8">{{ device.configuration.usage }}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Device State</h5>
+        </div>
+        <div class="card-body">
+          <ng-container *ngTemplateOutlet="stateComponent; context: { $implicit: device }"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

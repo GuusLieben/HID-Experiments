@@ -1,0 +1,27 @@
+<div class="code-block">
+  <code>{{ state$ | async | json }}</code>
+</div>
+<hr/>
+<div class="d-flex">
+  <div class="traffic-light my-auto mx-auto"
+       [class.disabled]="processing"
+       *ngIf="state$ | async as state">
+    <ng-container *ngTemplateOutlet="light; context: { $implicit: define('RED', state) }"></ng-container>
+    <ng-container *ngTemplateOutlet="light; context: { $implicit: define('YELLOW', state) }"></ng-container>
+    <ng-container *ngTemplateOutlet="light; context: { $implicit: define('GREEN', state) }"></ng-container>
+  </div>
+  @if (processing) {
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  }
+</div>
+
+<ng-template #light let-definition>
+  <div class="light {{ definition.color | lowercase }}"
+       [class.active]="definition.active"
+       (click)="toggle(definition.color)"
+  ></div>
+</ng-template>
